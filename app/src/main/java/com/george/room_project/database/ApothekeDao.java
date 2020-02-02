@@ -1,5 +1,6 @@
 package com.george.room_project.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -17,6 +18,6 @@ public interface ApothekeDao {
     void deleteAll();
 
     @Query("SELECT * from items_table")
-    List<Apotheke> getItems();
+    LiveData<List<Apotheke>> getItems();
 
 }
