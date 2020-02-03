@@ -22,7 +22,7 @@ public class ItemsViewModel extends AndroidViewModel {
         mAllItems = mRepository.getAllItems();
     }
 
-    LiveData<List<Apotheke>> getAllItems() {
+    public LiveData<List<Apotheke>> getAllItems() {
         return mAllItems;
     }
 

@@ -36,7 +36,7 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.Item
         if (mItems != null) {
             Apotheke current = mItems.get(position);
             holder.textViewName.setText(current.getItem());
-            holder.textViewQuantity.setText(current.getQuantity());
+            holder.textViewQuantity.setText(String.valueOf(current.getQuantity()));
         } else {
             // Covers the case of data not being ready yet.
             holder.textViewName.setText(mContext.getResources().getString(R.string.no_item));
@@ -63,7 +63,7 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.Item
         }
     }
 
-    void updateAdapter(){
+    public void updateAdapter(){
         notifyDataSetChanged();
     }
 }
