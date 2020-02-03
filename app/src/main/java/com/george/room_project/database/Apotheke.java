@@ -10,11 +10,11 @@ public class Apotheke {
     @PrimaryKey
     public int id;
     @ColumnInfo(name = "item")
-    public String item;
+    private String mItem;
     @ColumnInfo(name = "quantity")
-    public int quantity;
+    private int mQuantity;
 
-    /*public Apotheke(String item, int quantity) {
+    public Apotheke(String item, int quantity) {
         mItem = item;
         mQuantity = quantity;
     }
@@ -25,5 +25,5 @@ public class Apotheke {
 
     public int getQuantity(){
         return mQuantity;
-    }*/
+    }
 }
