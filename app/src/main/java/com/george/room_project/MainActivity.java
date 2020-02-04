@@ -1,5 +1,6 @@
 package com.george.room_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.george.room_project.database.Apotheke;
@@ -15,9 +16,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -58,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, NewItemsActivity.class);
+                startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
             }
         });
     }
@@ -84,5 +87,26 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+/*
+            Apotheke word = new Apotheke(data.getStringExtra(NewItemsActivity.EXTRA_REPLY_NAME),Integer.parseInt(data.getStringExtra(NewItemsActivity.EXTRA_REPLY_QUANTITY)));
+*/
+
+            Apotheke word = new Apotheke("orange",7);
+
+
+            mItemsViewModel.insert(word);
+            Log.e("hyzaar50","YES");
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    R.string.empty_not_saved,
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }

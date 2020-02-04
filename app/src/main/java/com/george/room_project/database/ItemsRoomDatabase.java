@@ -47,7 +47,7 @@ public abstract class ItemsRoomDatabase extends RoomDatabase {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
                 ApothekeDao dao = INSTANCE.apothekeDao();
-                dao.deleteAll();
+                /*dao.deleteAll();*/
 
                 Apotheke word = new Apotheke("Fruits",2);
                 dao.insert(word);
